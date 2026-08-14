@@ -1,0 +1,281 @@
+:root {
+    --ink: #1c1b19;
+    --paper: #f6f4ef;
+    --card: #ffffff;
+    --line: #e3e0d8;
+    --accent: #e64670;
+    --accent-soft: #e7d2e5;
+    --muted: #746f66;
+    --radius: 14px;
+    --font-display: "Georgia", "Iowan Old Style", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 20px;
+  
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -20px;
+  
+    background-image: url("everbackground.jpg");
+    background-size: cover;
+    background-position: center;
+  
+    filter: blur(12px);
+    transform: scale(1.05);
+  
+    z-index: -2;
+  }
+  .wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  z-index: -1;
+}
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px 36px;
+    box-shadow: 0 1px 2px rgba(28, 27, 25, 0.04);
+  }
+  
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--accent);
+  }
+  
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .name {
+    font-family: var(--font-display);
+    font-size: 28px;
+    margin: 0 0 4px;
+  }
+  
+  .role {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: inherit;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #8a8579;
+    transition: background 0.2s ease;
+  }
+  
+  .dot.online {
+    background: var(--accent);
+  }
+  
+  .live-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  
+  .time-label::after {
+    content: " · ";
+  }
+  
+  #currentTime {
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+  
+  .bio {
+    margin: 24px 0;
+    font-size: 15px;
+    color: #3a3833;
+  }
+  
+  .divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 24px 0;
+  }
+  
+  .section-label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  
+  .tag {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.12s ease, background 0.12s ease;
+  }
+  
+  .tag:hover {
+    background: #b79fb7;
+  }
+  
+  .tag.selected {
+    background: var(--accent);
+    color: #b79fb7;
+  }
+  
+  .skill-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease,
+              transform 0.1s ease,
+              background 0.15s ease;
+}
+
+#skillsList {
+  margin-bottom: 24px;
+}
+
+.skill-button:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.skill-button.selected {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+  .links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 9px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.15s ease, transform 0.1s ease;
+  }
+  
+  .links a:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      padding: 28px 22px;
+    }
+  
+    .top {
+      align-items: flex-start;
+    }
+  }
+  .card {
+  animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
